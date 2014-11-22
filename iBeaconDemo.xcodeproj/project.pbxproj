@@ -13,6 +13,9 @@
 		4C7BBADC1A1FC3DD00C85609 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C7BBADB1A1FC3DD00C85609 /* Images.xcassets */; };
 		4C7BBADF1A1FC3DD00C85609 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7BBADD1A1FC3DD00C85609 /* LaunchScreen.xib */; };
 		4C7BBAEB1A1FC3DD00C85609 /* iBeaconDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BBAEA1A1FC3DD00C85609 /* iBeaconDemoTests.swift */; };
+		4C7BBAF51A1FC43C00C85609 /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BBAF41A1FC43C00C85609 /* BeaconManager.swift */; };
+		4C7BBAF71A1FD7E000C85609 /* BeaconRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BBAF61A1FD7E000C85609 /* BeaconRegion.swift */; };
+		4C7BBB001A206D8100C85609 /* BeaconExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BBAFF1A206D8100C85609 /* BeaconExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,10 @@
 		4C7BBAE41A1FC3DD00C85609 /* iBeaconDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBeaconDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7BBAE91A1FC3DD00C85609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C7BBAEA1A1FC3DD00C85609 /* iBeaconDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeaconDemoTests.swift; sourceTree = "<group>"; };
+		4C7BBAF41A1FC43C00C85609 /* BeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
+		4C7BBAF61A1FD7E000C85609 /* BeaconRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconRegion.swift; sourceTree = "<group>"; };
+		4C7BBAFD1A1FF6AF00C85609 /* iBeaconPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iBeaconPlayground.playground; sourceTree = "<group>"; };
+		4C7BBAFF1A206D8100C85609 /* BeaconExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +84,14 @@
 		4C7BBAD11A1FC3DD00C85609 /* iBeaconDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4C7BBAFE1A20654000C85609 /* BeaconManager */,
 				4C7BBAD41A1FC3DD00C85609 /* AppDelegate.swift */,
 				4C7BBAD61A1FC3DD00C85609 /* ViewController.swift */,
 				4C7BBAD81A1FC3DD00C85609 /* Main.storyboard */,
 				4C7BBADB1A1FC3DD00C85609 /* Images.xcassets */,
 				4C7BBADD1A1FC3DD00C85609 /* LaunchScreen.xib */,
 				4C7BBAD21A1FC3DD00C85609 /* Supporting Files */,
+				4C7BBAFD1A1FF6AF00C85609 /* iBeaconPlayground.playground */,
 			);
 			path = iBeaconDemo;
 			sourceTree = "<group>";
@@ -110,6 +119,16 @@
 				4C7BBAE91A1FC3DD00C85609 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C7BBAFE1A20654000C85609 /* BeaconManager */ = {
+			isa = PBXGroup;
+			children = (
+				4C7BBAF61A1FD7E000C85609 /* BeaconRegion.swift */,
+				4C7BBAF41A1FC43C00C85609 /* BeaconManager.swift */,
+				4C7BBAFF1A206D8100C85609 /* BeaconExtensions.swift */,
+			);
+			name = BeaconManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +231,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C7BBAF51A1FC43C00C85609 /* BeaconManager.swift in Sources */,
+				4C7BBAF71A1FD7E000C85609 /* BeaconRegion.swift in Sources */,
 				4C7BBAD71A1FC3DD00C85609 /* ViewController.swift in Sources */,
 				4C7BBAD51A1FC3DD00C85609 /* AppDelegate.swift in Sources */,
+				4C7BBB001A206D8100C85609 /* BeaconExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +429,7 @@
 				4C7BBAF01A1FC3DD00C85609 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C7BBAF11A1FC3DD00C85609 /* Build configuration list for PBXNativeTarget "iBeaconDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +438,7 @@
 				4C7BBAF31A1FC3DD00C85609 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

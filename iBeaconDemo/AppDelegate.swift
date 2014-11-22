@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,12 +36,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        checkAutorizationStatus()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func checkAutorizationStatus() -> Bool {
+        switch CLLocationManager.authorizationStatus() {
+        case .Authorized:
+            return true
+        case .NotDetermined:
+            BeaconManager.sharedInstance.locationManager.requestAlwaysAuthorization()
+        case .AuthorizedWhenInUse, .Restricted, .Denied:
+            let alertController = UIAlertController(
+                title: "Background Location Access Disabled",
+                message: "In order to be notified about excibitions near you, please open this app's settings and set location access to 'Always'.",
+                preferredStyle: .Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            alertController.addAction(openAction)
+            
+            window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+        return false
+    }
 }
 

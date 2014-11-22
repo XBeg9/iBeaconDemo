@@ -7,14 +7,37 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var numberLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        numberLabel.text = "Unknown"
+        
+        BeaconManager.sharedInstance.authorizationStateHandler = { state in
+            if state == .Authorized {
+                self.view.backgroundColor = UIColor.greenColor()
+                
+                let beaconRegion = BeaconRegion(proximityUUID: NSUUID(UUIDString: "F7826DA6-4FA2-4E98-8024-BC5B71E0893E"), major: 1, identifier: "new_beacon_region")
+                
+                beaconRegion.rangeHandler = { beacons in
+                }
+                
+                beaconRegion.stateHandler = { state in
+                    self.numberLabel.text = state.toString()
+                }
+                
+                BeaconManager.sharedInstance.startMonitoringRegion(beaconRegion)
+            } else {
+                self.view.backgroundColor = UIColor.redColor()
+            }
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
