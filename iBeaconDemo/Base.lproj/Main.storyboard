@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,24 +17,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTZ-nt-MDC">
-                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Region State" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTZ-nt-MDC">
+                                <rect key="frame" x="0.0" y="126" width="600" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="dFF-wh-RVI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="51"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="dFF-wh-RVI"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4E-I7-2O1">
+                                <rect key="frame" x="0.0" y="281" width="600" height="319"/>
+                                <string key="text">Minor
+-90db
+</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Q4E-I7-2O1" firstAttribute="top" secondItem="pTZ-nt-MDC" secondAttribute="bottom" constant="81" id="7UX-Hk-f3O"/>
                             <constraint firstItem="pTZ-nt-MDC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DUY-KV-rOU"/>
+                            <constraint firstItem="pTZ-nt-MDC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Evy-Ji-9aY"/>
+                            <constraint firstAttribute="trailing" secondItem="pTZ-nt-MDC" secondAttribute="trailing" id="F0O-3h-g1y"/>
+                            <constraint firstItem="pTZ-nt-MDC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="106" id="F8w-er-m7g"/>
+                            <constraint firstItem="Q4E-I7-2O1" firstAttribute="leading" secondItem="pTZ-nt-MDC" secondAttribute="leading" id="LlT-zD-DdI"/>
+                            <constraint firstAttribute="centerX" secondItem="pTZ-nt-MDC" secondAttribute="centerX" id="TEv-an-YGo"/>
+                            <constraint firstItem="Q4E-I7-2O1" firstAttribute="trailing" secondItem="pTZ-nt-MDC" secondAttribute="trailing" id="WAI-qU-1QI"/>
                             <constraint firstItem="pTZ-nt-MDC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="269" id="Xfe-q5-v44"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pTZ-nt-MDC" secondAttribute="bottom" constant="400" id="a8f-he-xhY"/>
+                            <constraint firstItem="Q4E-I7-2O1" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="fSI-C7-txX"/>
+                            <constraint firstItem="pTZ-nt-MDC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lQI-LS-3qn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pTZ-nt-MDC" secondAttribute="bottom" constant="290" id="qHV-1k-Mix"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DUY-KV-rOU"/>
+                                <exclude reference="Evy-Ji-9aY"/>
+                                <exclude reference="TEv-an-YGo"/>
+                                <exclude reference="Xfe-q5-v44"/>
+                                <exclude reference="qHV-1k-Mix"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="minorLabel" destination="Q4E-I7-2O1" id="vuf-r9-lfl"/>
                         <outlet property="numberLabel" destination="pTZ-nt-MDC" id="P87-xB-KHt"/>
                     </connections>
                 </viewController>
