@@ -43,6 +43,9 @@ class ViewController: UIViewController {
                 
                 BeaconManager.sharedInstance.startMonitoringRegion(beaconRegion)
             } else {
+                self.numberLabel.text = "Disabled"
+                self.minorLabel.text = ""
+                
                 self.view.backgroundColor = UIColor.redColor()
             }
         }
