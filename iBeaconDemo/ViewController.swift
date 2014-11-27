@@ -19,15 +19,13 @@ class ViewController: UIViewController {
         
         numberLabel.text = "Unknown"
         
-        //@TODO please check also if Bluetooth is enabled
-        
         BeaconManager.sharedInstance.authorizationStateHandler = { state in
-            if state == .Authorized {
+            if state == true {
                 self.view.backgroundColor = UIColor.greenColor()
                 
                 let beaconRegion = BeaconRegion(proximityUUID: NSUUID(UUIDString: "F7826DA6-4FA2-4E98-8024-BC5B71E0893E"), major: 5555, identifier: "new_beacon_region")
                 
-                beaconRegion.rangeHandler = { beacons in
+                beaconRegion.rangeHandler = { [unowned self] beacons in
                     var sortedBeacons = beacons.sorted { $0.rssi > $1.rssi }.reverse() as [CLBeacon!]
 
                     for beacon in sortedBeacons {
@@ -37,7 +35,7 @@ class ViewController: UIViewController {
                     }
                 }
                 
-                beaconRegion.stateHandler = { state in
+                beaconRegion.stateHandler = { [unowned self] state in
                     self.numberLabel.text = state.toString()
                 }
                 

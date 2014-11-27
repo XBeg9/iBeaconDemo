@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import CoreBluetooth
 
-typealias tAutorizationStateHandler = (CLAuthorizationStatus!) -> Void
+typealias tAutorizationStateHandler = (Bool!) -> Void
 
 let sharedBeaconManager = BeaconManager()
 
@@ -62,6 +62,14 @@ class BeaconManager: NSObject, CLLocationManagerDelegate, CBCentralManagerDelega
         return nil
     }
     
+    func authorizationStatus() -> Bool {
+        if (bluetoothManager.state == .PoweredOn && CLLocationManager.authorizationStatus() == .Authorized){
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // CBCentralManagerDelegate
     
     func centralManagerDidUpdateState(central: CBCentralManager!) {
@@ -75,6 +83,8 @@ class BeaconManager: NSObject, CLLocationManagerDelegate, CBCentralManagerDelega
                     locationManager.stopRangingBeaconsInRegion(region)
                 }
         }
+        
+        authorizationStateHandler?(authorizationStatus())
     }
     
     // CLLocationManagerDelegate
@@ -86,7 +96,7 @@ class BeaconManager: NSObject, CLLocationManagerDelegate, CBCentralManagerDelega
             }
         }
         
-        authorizationStateHandler?(status)
+        authorizationStateHandler?(authorizationStatus())
     }
     
     func locationManager(manager: CLLocationManager!, didStartMonitoringForRegion region: CLRegion!) {
